@@ -1,0 +1,24 @@
+.home {
+  background-image: url("./../../images/landingpage_pic.jpg");
+  background-size: cover;
+  height: 100vh;
+  z-index: 3;
+}
+
+.landingText {
+  color: white;
+  height: 100vh;
+  margin: 1px;
+  padding-bottom: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  padding-top: 0px; // To avoid the topbar from covering content
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+}

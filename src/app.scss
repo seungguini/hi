@@ -1,0 +1,35 @@
+// Import React-Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+.body {
+  margin: 0;
+  border: 0;
+}
+
+.App {
+  height: 100vh;
+  background-color: magenta;
+  overflow: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.sections {
+  width: 100%;
+  height: 100%; /*Leave room for TopBar*/
+  position: relative;
+
+  scrollbar-width: none; // Removes scrollbar for firefox
+  &::-webkit-scrollbar {
+    // Removes scrollbar for other browsers
+    display: none;
+  }
+
+  > * {
+    padding-top: 65px; // To avoid the topbar from covering content
+
+    scroll-snap-align: start;
+    width: 100vw;
+    height: 100vh;
+  }
+}
