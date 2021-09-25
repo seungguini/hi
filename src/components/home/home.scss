@@ -22,3 +22,16 @@ img {
   height: auto;
   max-height: 100%;
 }
+
+#wrapper {
+  display: flex;
+
+  span {
+    font-size: 25px;
+  }
+
+  #cursor {
+    margin: 0;
+    display: inline-block;
+  }
+}
