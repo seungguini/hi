@@ -1,6 +1,11 @@
 import React, { useRef, useState, useEffect, useLayoutEffect } from "react";
 import "./home.scss";
 
+import moon from "./../../images/moon.png";
+import stars from "./../../images/stars.png";
+import mountains_behind from "./../../images/mountains_behind.png";
+import mountains_front from "./../../images/mountains_front.png";
+
 import { gsap } from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,7 +14,6 @@ gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
 function typeOccupation(target, text, duration) {
   return gsap.to(target, {
-    color: "purple",
     text: text,
     duration: duration,
     delay: 1,
@@ -50,7 +54,7 @@ export default function Home() {
           duration: 1.5,
           ease: "power4.easeInOut",
         },
-        "<1"
+        "<2"
       )
       .to(cursor.current, {
         opacity: 0,
@@ -61,15 +65,15 @@ export default function Home() {
       });
 
     occupationTimeline.current
-      .add(typeOccupation(occupation.current, "an CS Major @ NYU", 2))
-      .add(typeOccupation(occupation.current, "a NLP Researcher", 1))
-      .add(typeOccupation(occupation.current, "a Software Developer", 1))
-      .add(typeOccupation(occupation.current, "a CS Teaching Assistant", 1))
-      .repeat();
+      .add(typeOccupation(occupation.current, "a Software Engineer", 2))
+      .add(typeOccupation(occupation.current, "a ML Researcher", 1.5))
+      .add(typeOccupation(occupation.current, "a CS Major @ NYU", 1.5))
+      .add(typeOccupation(occupation.current, "a CS Teaching Assistant", 2))
+      .repeat(-1);
 
     masterTimeline.current
       .add(introTimeline.current)
-      .add(occupationTimeline.current, "+= 1");
+      .add(occupationTimeline.current, "<3");
     //.paused(false);
   }, []); // The empty array [] has this run only on the first render
 
@@ -80,7 +84,14 @@ export default function Home() {
 
   return (
     <div className="home" id="home">
+      <section>
+        <img src={stars} id="stars"></img>
+        <img src={moon} id="moon"></img>
+        <img src={mountains_behind} id="mountains_behind"></img>
+        <img src={mountains_front} id="mountains_front"></img>
+      </section>
       <div className="landingText">
+        <div className="dimmer"></div>
         <h1 ref={hiText}>Hi, I'm Seunggun</h1>
         <div ref={iAmAText} id="wrapper">
           <span>I am&nbsp;</span>
