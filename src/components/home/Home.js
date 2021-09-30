@@ -9,6 +9,7 @@ gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
 function typeOccupation(target, text, duration) {
   return gsap.to(target, {
+    color: "purple",
     text: text,
     duration: duration,
     delay: 1,
@@ -41,12 +42,16 @@ export default function Home() {
         duration: 1.5,
         ease: "power4.easeInOut",
       })
-      .from(iAmAText.current, {
-        y: "+=10",
-        opacity: 0,
-        duration: 1.5,
-        ease: "power4.easeInOut",
-      })
+      .from(
+        iAmAText.current,
+        {
+          y: "+=10",
+          opacity: 0,
+          duration: 1.5,
+          ease: "power4.easeInOut",
+        },
+        "<1"
+      )
       .to(cursor.current, {
         opacity: 0,
         ease: "power0",
@@ -56,16 +61,15 @@ export default function Home() {
       });
 
     occupationTimeline.current
-      .add(typeOccupation(occupation.current, "an Undergrad Student @ NYU", 2))
-      .add(typeOccupation(occupation.current, "a CS Major", 1))
-      .add(typeOccupation(occupation.current, "a Software Developer", 1))
+      .add(typeOccupation(occupation.current, "an CS Major @ NYU", 2))
       .add(typeOccupation(occupation.current, "a NLP Researcher", 1))
-      .add(typeOccupation(occupation.current, "a Computer Science Tutor", 1))
+      .add(typeOccupation(occupation.current, "a Software Developer", 1))
+      .add(typeOccupation(occupation.current, "a CS Teaching Assistant", 1))
       .repeat();
 
     masterTimeline.current
       .add(introTimeline.current)
-      .add(occupationTimeline.current, "<3");
+      .add(occupationTimeline.current, "+= 1");
     //.paused(false);
   }, []); // The empty array [] has this run only on the first render
 
